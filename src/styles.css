@@ -11,6 +11,7 @@ h2, h3 {
 table {
     margin: 30px 0;
     border: 1px solid #A2A392;
+    background-color: #F8F4E3;
 }
 
 td, th {
