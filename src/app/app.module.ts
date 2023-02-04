@@ -14,19 +14,12 @@ import { CityService } from './weather-form/get-city.service';
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherContainerComponent,
+    WeatherContainerComponent, // TODO: все декларации и провайды должны быть вынесены в модуль который их использует чтобы не засорять root module. Думай о том что приложние может разрастаться и тогда app.module будет на миллирд строк с такой имплементацией
     WeatherInformationComponent,
-    WeatherFormComponent
+    WeatherFormComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [
-    WeaherService,
-    CityService
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, FormsModule, HttpClientModule],
+  providers: [WeaherService, CityService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
