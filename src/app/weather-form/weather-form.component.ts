@@ -33,4 +33,13 @@ export class WeatherFormComponent {
       }
     })
   }
+
+  setCurrentPosition() {    
+    navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
+      this.lat.emit(position.coords.latitude)
+      this.long.emit(position.coords.longitude)
+      this.cityName = ""
+      this.responceCityName = ""
+    })
+  }
 }

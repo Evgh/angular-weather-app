@@ -1,9 +1,6 @@
 <div class="layout">
     <div class="layout-header">
-        <div class="row-container">
-            <button (click)="setCurrentPosition()">Current location</button>
-            <app-weather-form [responceCityName]="city" (lat)="onLatChanged($event)" (long)="onLongChanged($event)"/>    
-        </div> 
+        <app-weather-form (lat)="onLatChanged($event)" (long)="onLongChanged($event)"/>
 
         <div class="row-container header-label">
             <p>latitude:</p>

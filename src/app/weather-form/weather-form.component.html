@@ -1,4 +1,5 @@
 <div class="row-container">
+    <button (click)="setCurrentPosition()">Current location</button>
     <input id="city" type="text" [(ngModel)]="cityName" (ngModelChange)="onSearchChange($event)" placeholder="Enter city">
     <p class="header-label">{{responceCityName}}</p>
 </div>

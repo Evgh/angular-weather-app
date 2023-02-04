@@ -15,7 +15,7 @@ export class WeaherService {
         return this.http.get<WeatherResponce>(`${enviroment.getWeatherUrl}?lat=${lat}&lon=${long}&appid=${enviroment.apiKey}&units=metric`)
             .pipe(map((data: WeatherResponce) => {
 
-                const weatherItem = data.list[0];
+                const weatherItem = data.list[0]
                 const weather: Weather = {
                     dt: weatherItem.dt,
                     temperature: weatherItem.main.temp,
@@ -26,7 +26,7 @@ export class WeaherService {
                     weather_description: weatherItem.weather[0].description,
                     weather_icon: weatherItem.weather[0].icon
                 }
-                return weather;
-            }));   
+                return weather
+            }))   
     }
 }

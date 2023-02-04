@@ -8,7 +8,6 @@ import { WeaherService } from './get-weather.service';
   styleUrls: ['./weather-container.component.css']
 })
 export class WeatherContainerComponent {
-  city = ""
   lat = 53.9006
   long = 27.5590
   currentWeather : Weather = {
@@ -41,14 +40,5 @@ export class WeatherContainerComponent {
   onLongChanged(long: number){
     this.long = long
     this.getWeather()
-  }
-
-  setCurrentPosition() {    
-    navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
-      this.lat = position.coords.latitude
-      this.long = position.coords.longitude  
-      this.city = ""
-      this.getWeather();
-    })
   }
 }
