@@ -8,7 +8,8 @@ import { WeatherContainerComponent } from './weather-container/weather-container
 import { WeatherInformationComponent } from './weather-information/weather-information.component';
 import { WeatherFormComponent } from './weather-form/weather-form.component';
 
-import { WeaherService } from './weather-service';
+import { WeaherService } from './weather-container/get-weather.service';
+import { CityService } from './weather-form/get-city.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { WeaherService } from './weather-service';
     HttpClientModule
   ],
   providers: [
-    WeaherService
+    WeaherService,
+    CityService
   ],
   bootstrap: [AppComponent]
 })

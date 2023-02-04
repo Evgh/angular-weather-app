@@ -1,45 +1,18 @@
 <div class="layout">
     <div class="layout-header">
         <div class="row-container">
-            <button (click)="setCurrentPosition()">Set current location</button>
-            <button  (click)="getWeather()">Get weather</button>
-        </div>
-        <div class="row-container">
-            <input id="lat" type="number" max="90" min="-90" [(ngModel)]="lat" placeholder="0">
-            <input id="long" type="number" max="180" min="-180" [(ngModel)]="long" placeholder="0">
-            <div class="row-container header-label">
-                <p>latitude:</p>
-                <p>{{lat}}</p>
-                <p>longtitude:</p>
-                <p>{{long}}</p>
-            </div>    
-        </div>
+            <button (click)="setCurrentPosition()">Current location</button>
+            <app-weather-form [responceCityName]="city" (lat)="onLatChanged($event)" (long)="onLongChanged($event)"/>    
+        </div> 
+
+        <div class="row-container header-label">
+            <p>latitude:</p>
+            <p>{{lat}}</p>
+            <p>longtitude:</p>
+            <p>{{long}}</p>
+        </div> 
     </div>    
     <div class="layout-body">
-        <div>
-            <h2>{{currentWeather.weather}}</h2>
-            <h3>{{currentWeather.weather_description}}</h3>
-            <table>
-                <tr>
-                    <th>Temperature: </th>
-                    <td>{{currentWeather.temperature}}</td>
-                </tr> 
-                <tr>
-                    <th>Feels like:</th>
-                    <td>{{currentWeather.feels_like}}</td>
-                </tr>    
-                <tr>
-                    <th>Pressure:</th>
-                    <td>{{currentWeather.pressure}}</td>
-                </tr>         
-                <tr>
-                    <th>Humidity:</th>
-                    <td>{{currentWeather.humidity}}</td>
-                </tr>           
-            </table>
-        </div>
-
-        <app-weather-form></app-weather-form>
-        <app-weather-information></app-weather-information>
+        <app-weather-information [currentWeather]="currentWeather"/>
     </div>
 </div>

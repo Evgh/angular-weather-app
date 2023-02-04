@@ -1,14 +1,14 @@
-import { Component, DoCheck } from '@angular/core';
-import { Weather } from '../weather';
-import { WeaherService } from '../weather-service';
+import { Component } from '@angular/core';
+import { Weather } from '../abstractions/weather';
+import { WeaherService } from './get-weather.service';
 
 @Component({
   selector: 'app-weather-container',
   templateUrl: './weather-container.component.html',
   styleUrls: ['./weather-container.component.css']
 })
-export class WeatherContainerComponent implements DoCheck {
-  sity = "Sity"
+export class WeatherContainerComponent {
+  city = ""
   lat = 53.9006
   long = 27.5590
   currentWeather : Weather = {
@@ -24,34 +24,31 @@ export class WeatherContainerComponent implements DoCheck {
 
   constructor(private weatherService : WeaherService){
     weatherService.getWeather(this.lat, this.long).subscribe(data => {
-      this.currentWeather = data;
+      this.currentWeather = data
     });
+  }
+
+  getWeather() {
+    this.weatherService.getWeather(this.lat, this.long).subscribe(data => {
+      this.currentWeather = data
+    });
+  }
+
+  onLatChanged(lat: number){
+    this.lat = lat
+  }
+
+  onLongChanged(long: number){
+    this.long = long
+    this.getWeather()
   }
 
   setCurrentPosition() {    
     navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
       this.lat = position.coords.latitude
       this.long = position.coords.longitude  
+      this.city = ""
+      this.getWeather();
     })
-  }
-
-  getWeather() {
-    this.weatherService.getWeather(this.lat, this.long).subscribe(data => {
-      this.currentWeather = data;
-    });
-  }
-
-  ngDoCheck(): void {
-    if(this.lat > 90)
-      this.lat = 90
-    else if(this.lat < -90)
-      this.lat = -90
-
-    if(this.long > 180)
-      this.long = 180
-    else if(this.long < -180)
-      this.long = -180
-
-    console.log("Do check");
   }
 }

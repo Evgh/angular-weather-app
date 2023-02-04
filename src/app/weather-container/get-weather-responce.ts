@@ -1,7 +1,8 @@
-export interface WeatherObject {
-    main: string
-    description: string
-    icon: string
+export interface WeatherResponce {
+    cod: string
+    message: number
+    cnt: number
+    list: Array<WeatherItem>
 }
 
 export interface WeatherMain {
@@ -17,9 +18,11 @@ export interface WeatherItem {
     weather: Array<WeatherObject>
 }
 
-export interface WeatherResponce {
-    cod: string
-    message: number
-    cnt: number
-    list: Array<WeatherItem>
+export interface WeatherObject {
+    main: string
+    description: string
+    icon: string
 }
+
+
+

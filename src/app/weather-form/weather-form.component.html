@@ -1,3 +1,4 @@
-<div>
-    <p>This element will contain a form to choose a location</p>
+<div class="row-container">
+    <input id="city" type="text" [(ngModel)]="cityName" (ngModelChange)="onSearchChange($event)" placeholder="Enter city">
+    <p class="header-label">{{responceCityName}}</p>
 </div>
